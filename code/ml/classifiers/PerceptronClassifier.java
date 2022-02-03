@@ -11,12 +11,14 @@ public class PerceptronClassifier implements Classifier {
 	private int numIterations = 10;
 	private ArrayList<Double> w;
 	private double b = 0;
+	DataSet data;
 
 	public PerceptronClassifier() {
 	}
 
 	@Override
 	public void train(DataSet data) {
+		this.data = data;
 		// initialize weight vectors to all zeroes
 		int numFeatures = data.getAllFeatureIndices().size();
 		w = new ArrayList<Double>(Collections.nCopies(numFeatures, 0.0));
@@ -75,6 +77,15 @@ public class PerceptronClassifier implements Classifier {
 
 	@Override
 	public String toString() {
-		return "";
+		String str = "";
+
+		for (int i = 0; i < data.getAllFeatureIndices().size(); i++) {
+			str += data.getAllFeatureIndices().toArray()[i] + ":" + w.get(i) + " ";
+		}
+		return str + b;
+	}
+
+	public static void main(String[] args) {
+		
 	}
 }

@@ -69,14 +69,17 @@ public class Experimenter {
 		PerceptronClassifier p1 = new PerceptronClassifier();
 		AveragePerceptronClassifier p2 = new AveragePerceptronClassifier();
 		
-		ClassifierTimer.timeClassifier(p1, dataset, 100);
-		ClassifierTimer.timeClassifier(p2, dataset, 100);
+//		ClassifierTimer.timeClassifier(p1, dataset, 100);
+//		ClassifierTimer.timeClassifier(p2, dataset, 100);
 		
-//		double[] results1 = runXTrials(dataset, p1, NUM_TRIALS, 0.8);
-//		double[] results2 = runXTrials(dataset, p2, NUM_TRIALS, 0.8);
+		double[] results1 = runXTrials(dataset, p1, NUM_TRIALS, 0.8);
+		double[] results2 = runXTrials(dataset, p2, NUM_TRIALS, 0.8);
 //
-//		System.out.println("AveragePerceptron: " + results2[1]);
-//		System.out.println("Perceptron: " + results1[1]);
+		System.out.println("AveragePerceptron: " + results2[1]);
+		System.out.println("Perceptron: " + results1[1]);
+		
+		System.out.println(p1);
+		System.out.println(p2);
 
 //		ArrayList<Point> points = new ArrayList<Point>();
 //

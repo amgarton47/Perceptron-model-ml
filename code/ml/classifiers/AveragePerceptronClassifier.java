@@ -12,12 +12,14 @@ public class AveragePerceptronClassifier implements Classifier {
 	private ArrayList<Double> w, u;
 	private double b = 0, b2 = 0;
 	private int updated = 0, total = 0;
+	private DataSet data;
 
 	public AveragePerceptronClassifier() {
 	}
 
 	@Override
 	public void train(DataSet data) {
+		this.data = data;
 		// initialize weight vectors to all zeroes
 		int numFeatures = data.getAllFeatureIndices().size();
 		w = new ArrayList<Double>(Collections.nCopies(numFeatures, 0.0));
@@ -97,6 +99,11 @@ public class AveragePerceptronClassifier implements Classifier {
 
 	@Override
 	public String toString() {
-		return "";
+		String str = "";
+
+		for (int i = 0; i < data.getAllFeatureIndices().size(); i++) {
+			str += data.getAllFeatureIndices().toArray()[i] + ":" + w.get(i) + " ";
+		}
+		return str + b;
 	}
 }
