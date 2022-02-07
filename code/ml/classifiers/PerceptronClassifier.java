@@ -2,16 +2,15 @@ package ml.classifiers;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 import ml.DataSet;
 import ml.Example;
 
 public class PerceptronClassifier implements Classifier {
-	private int numIterations = 10;
-	private ArrayList<Double> w;
-	private double b = 0;
-	DataSet data;
+	protected int numIterations = 10;
+	protected ArrayList<Double> w;
+	protected double b = 0;
+	protected DataSet data;
 
 	public PerceptronClassifier() {
 	}
@@ -25,7 +24,7 @@ public class PerceptronClassifier implements Classifier {
 
 		for (int i = 0; i < numIterations; i++) {
 			// randomly shuffle the data
-			shuffle(data);
+			Collections.shuffle(data.getData());
 
 			for (Example example : data.getData()) {
 				double prediction = getPrediction(example);
@@ -42,18 +41,7 @@ public class PerceptronClassifier implements Classifier {
 		}
 	}
 
-	private void shuffle(DataSet data) {
-		// randomly shuffle the data
-		for (int l = data.getData().size() - 1; l > 0; l--) {
-			Random r = new Random();
-			int randomIndex = r.nextInt(l + 1);
-			Example temp = data.getData().get(l);
-			data.getData().set(l, data.getData().get(randomIndex));
-			data.getData().set(randomIndex, temp);
-		}
-	}
-
-	private double getPrediction(Example example) {
+	protected double getPrediction(Example example) {
 		double prediction = b;
 		for (int i = 0; i < w.size(); i++) {
 			prediction += w.get(i) * example.getFeature(i);
@@ -86,6 +74,6 @@ public class PerceptronClassifier implements Classifier {
 	}
 
 	public static void main(String[] args) {
-		
+
 	}
 }

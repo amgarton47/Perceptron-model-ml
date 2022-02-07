@@ -68,47 +68,48 @@ public class Experimenter {
 
 		PerceptronClassifier p1 = new PerceptronClassifier();
 		AveragePerceptronClassifier p2 = new AveragePerceptronClassifier();
-		
+
 //		ClassifierTimer.timeClassifier(p1, dataset, 100);
 //		ClassifierTimer.timeClassifier(p2, dataset, 100);
-		
+
 		double[] results1 = runXTrials(dataset, p1, NUM_TRIALS, 0.8);
 		double[] results2 = runXTrials(dataset, p2, NUM_TRIALS, 0.8);
 //
 		System.out.println("AveragePerceptron: " + results2[1]);
 		System.out.println("Perceptron: " + results1[1]);
-		
+
 		System.out.println(p1);
 		System.out.println(p2);
 
-//		ArrayList<Point> points = new ArrayList<Point>();
-//
+		ArrayList<Point> points = new ArrayList<Point>();
+
 //		System.out.println("\nPERCEPTRON ACCURACIES (varying num train iterations)\n");
-//		for (int iters = 0; iters <= 100; iters += 10) {
+//		for (int iters = 0; iters <= 200; iters += 10) {
 //			PerceptronClassifier p = new PerceptronClassifier();
 //			p.setIterations(iters);
 //
 //			double[] results = runXTrials(dataset, p, NUM_TRIALS, 0.8);
-//			System.out.println(
-//					"PC: iterations: " + iters + " train accuracy: " + results[0] + " test accuracy: " + results[1]);
+//			System.out.println("(" + iters + ", " + results[0] + ")");
+////			System.out.println(
+////					"PC: iterations: " + iters + " train accuracy: " + results[0] + " test accuracy: " + results[1]);
 //
 //			AveragePerceptronClassifier ap = new AveragePerceptronClassifier();
 //			ap.setIterations(iters);
 //
 //			double[] resultss = runXTrials(dataset, ap, NUM_TRIALS, 0.8);
-//			System.out.println(
-//					"APC: iterations: " + iters + " train accuracy: " + resultss[0] + " test accuracy: " + results[1]);
+////			System.out.println("(" + iters + ", " + resultss[0] + ")");
+////			System.out.println(
+////					"APC: iterations: " + iters + " train accuracy: " + resultss[0] + " test accuracy: " + results[1]);
 //
 ////			points.add(new Point(iters, resultss[1]));
-//			points.add(new Point(iters, results[1]));
+////			points.add(new Point(iters, results[1]));
 //		}
-//
-//		// accuracy graph for varying # of train iterations
+
+		// accuracy graph for varying # of train iterations
 //		G g = new G(100, 100, points);
 //		g.setXLabel("# train iterations");
 //		g.setYLabel("accuracy");
 //		g.graph(500, 500);
-		
-		
+
 	}
 }
