@@ -6,6 +6,12 @@ import java.util.Collections;
 import ml.DataSet;
 import ml.Example;
 
+/**
+ * A simple Perceptron classification model.
+ * 
+ * @author Aidan Garton
+ *
+ */
 public class PerceptronClassifier implements Classifier {
 	protected int numIterations = 10;
 	protected ArrayList<Double> w;
@@ -41,6 +47,12 @@ public class PerceptronClassifier implements Classifier {
 		}
 	}
 
+	/**
+	 * helper function for getting prediction of a data example
+	 * 
+	 * @param example - the example to predict a label for
+	 * @return - the predicted "point in space" of the example
+	 */
 	protected double getPrediction(Example example) {
 		double prediction = b;
 		for (int i = 0; i < w.size(); i++) {
@@ -51,14 +63,14 @@ public class PerceptronClassifier implements Classifier {
 
 	@Override
 	public double classify(Example example) {
-		double prediction = b;
-
-		for (int i = 0; i < w.size(); i++) {
-			prediction += w.get(i) * example.getFeature(i);
-		}
-		return prediction >= 0 ? 1.0 : -1.0;
+		return getPrediction(example) >= 0 ? 1.0 : -1.0;
 	}
 
+	/**
+	 * setter method for the number of training Iterations
+	 * 
+	 * @param numIterations - the number of iterations to train our model on
+	 */
 	public void setIterations(int numIterations) {
 		this.numIterations = numIterations;
 	}
@@ -71,9 +83,5 @@ public class PerceptronClassifier implements Classifier {
 			str += data.getAllFeatureIndices().toArray()[i] + ":" + w.get(i) + " ";
 		}
 		return str + b;
-	}
-
-	public static void main(String[] args) {
-
 	}
 }
